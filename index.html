@@ -17,7 +17,7 @@
           <span>
             <img src="Images/selo.svg" alt="Selo Rocketseat" />
           </span>
-          <img src="http://lorempixel.com.br/185/185/" alt="Foto de Perfil" />
+          <img src="https://picsum.photos/185/185" alt="Foto de Perfil" />
         </div>
         <div class="about">
           <h1>Guilherme Reis</h1>
@@ -27,25 +27,25 @@
           <p>Desenvolvedor Júnior focado em front-end com React</p>
         </div>
         <div class="networks">
-          <ul>
-            <li class="network_icons">
+          <ul id="SocialMediaLinks">
+            <li class="youtube">
               <a target="_blank" href=""
                 ><img src="Images/youtube_icon.svg" alt="Icone de alguma rede"
               /></a>
             </li>
-            <li class="network_icons">
+            <li class="instagram">
               <a target="_blank" href=""
                 ><img
                   src="Images/instagram_icon.svg"
                   alt="Icone de alguma rede"
               /></a>
             </li>
-            <li class="network_icons">
+            <li class="facebook">
               <a target="_blank" href=""
                 ><img src="Images/facebook_icon.svg" alt="Icone de alguma rede"
               /></a>
             </li>
-            <li class="network_icons">
+            <li class="twitter">
               <a target="_blank" href=""
                 ><img src="Images/twitter_icon.svg" alt="Icone de alguma rede"
               /></a>
@@ -54,5 +54,22 @@
         </div>
       </div>
     </main>
+    <script>
+      const ProfileNameSocialMedia = {
+        github: 'GuilhermeSR98',
+        youtube: 'channel/UCSJ4gkVC6NrvII8umztf0Ow',
+        instagram: '98.gsr',
+        facebook: '',
+        twitter: ''
+      }
+      
+      function ChangeSocialMediaLinks() {
+        for (let li of SocialMediaLinks.children) {
+          const social = li.getAttribute('class')
+          li.children[0].href = `https://${social}.com/${ProfileNameSocialMedia[social]}`
+        }
+      }
+      ChangeSocialMediaLinks()
+    </script>
   </body>
 </html>
