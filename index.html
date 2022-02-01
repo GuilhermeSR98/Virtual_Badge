@@ -17,14 +17,15 @@
           <span>
             <img src="Images/selo.svg" alt="Selo Rocketseat" />
           </span>
-          <img src="https://picsum.photos/185/185" alt="Foto de Perfil" />
+          <img id="userPicture" src="" alt="Foto de Perfil" />
         </div>
         <div class="about">
-          <h1>Guilherme Reis</h1>
-          <a target="_blank" href="https://github.com/GuilhermeSR98"
-            ><img src="Images/github.svg" alt="Icone github" /> @98.gsr</a
-          >
-          <p>Desenvolvedor Júnior focado em front-end com React</p>
+          <h1 id="userName"></h1>
+          <a id="githubLink" target="_blank" href=""
+            ><img src="Images/github.svg" alt="Icone github" />
+            <span id="userLogin"></span
+          ></a>
+          <p id="userBio"></p>
         </div>
         <div class="networks">
           <ul id="SocialMediaLinks">
@@ -62,7 +63,7 @@
         facebook: '',
         twitter: ''
       }
-      
+
       function ChangeSocialMediaLinks() {
         for (let li of SocialMediaLinks.children) {
           const social = li.getAttribute('class')
@@ -70,6 +71,20 @@
         }
       }
       ChangeSocialMediaLinks()
+
+      function GithubProfileData() {
+        const url = `https://api.github.com/users/${ProfileNameSocialMedia.github}`
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            userPicture.src = data.avatar_url
+            userName.textContent = data.name
+            userLogin.textContent = data.login
+            githubLink.href = data.html_url
+            userBio.textContent = data.bio
+          })
+      }
+      GithubProfileData()
     </script>
   </body>
 </html>
